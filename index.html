@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stozee - Top Up Game Murah & Cepat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #6A4CFF;
+            --secondary: #FF4C7D;
+            --dark: #1A1A2E;
+            --light: #F5F5F5;
+            --gray: #808080;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background-color: rgba(26, 26, 46, 0.9);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 999;
+            border-bottom: 1px solid var(--primary);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn-login {
+            background-color: var(--primary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 5px;
+        }
+
+        .btn-login:hover {
+            background-color: #573edb;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 5% 4rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .hero-text {
+            flex: 1 1 300px;
+        }
+
+        .hero-text h1 {
+            font-size: 2.5rem;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        .hero-text h1 span {
+            color: var(--primary);
+        }
+
+        .hero-text p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .btn-topup {
+            background-color: var(--secondary);
+            color: var(--light);
+            text-decoration: none;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn-topup:hover {
+            background-color: #e03a6a;
+        }
+
+        .hero-img {
+            flex: 1 1 300px;
+            text-align: center;
+        }
+
+        .hero-img img {
+            width: 80%;
+            max-width: 400px;
+            border-radius: 10px;
+        }
+
+        /* Game List Section */
+        .game-section {
+            padding: 3rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-title span {
+            color: var(--primary);
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .game-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            border: 1px solid var(--primary);
+        }
+
+        .game-card img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1rem;
+            border-radius: 50%;
+        }
+
+        /* How To Section */
+        .howto-section {
+            padding: 3rem 5%;
+            background-color: rgba(106, 76, 255, 0.1);
+        }
+
+        .howto-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .step-card {
+            background-color: var(--dark);
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .step-card .step-number {
+            background-color: var(--primary);
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 1px solid var(--primary);
+            color: var(--gray);
+        }
+
+        .social-links a {
+            color: var(--primary);
+            margin: 0 0.5rem;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Bisa diganti dengan menu hamburger jika ingin tambah fitur */
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-img img {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">Sto<span>zee</span></div>
+        <div class="nav-links">
+            <a href="#home">Beranda</a>
+            <a href="#games">Game</a>
+            <a href="#howto">Cara Top Up</a>
+            <a href="#" class="btn-login">Masuk/Daftar</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <h1>Top Up Game Favoritmu <span>Cepat & Murah</span> di Stozee!</h1>
+            <p>Bayar dengan berbagai metode pembayaran lokal Indonesia seperti OVO, Gopay, Dana, Transfer Bank, dan Pulsa.</p>
+            <a href="#games" class="btn-topup">Mulai Top Up</a>
+        </div>
+        <div class="hero-img">
+            <img src="https://images.unsplash.com/photo-1551009175-15bdf9dcb580?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Top Up Game">
+        </div>
+    </section>
+
+    <!-- Game List Section -->
+    <section class="game-section" id="games">
+        <h2 class="section-title">Game <span>Populer</span></h2>
+        <div class="game-grid">
+            <div class="game-card">
+                <img src="https://upload.wikimedia.org/wikipedia/id/thumb/6/6d/Mobile_Legends_Bang_Bang_Logo.png/1200px-Mobile_Legends_Bang_Bang_Logo.png" alt="Mobile Legends">
+                <p>Mobile Legends</p>
+            </div>
+            <div class="game-card">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/98/Free_Fire_Logo.png/220px-Free_Fire_Logo.png" alt="Free Fire">
+                <p>Free Fire</p>
+            </div>
+            <div class="game-card">
+                <img src="https://upload.wikimedia.org/wikipedia/id/thumb/7/7b/PUBG_Mobile_Logo.png/1200px-PUBG_Mobile_Logo.png" alt="PUBG Mobile">
+                <p>PUBG Mobile</p>
+            </div>
+            <div class="game-card">
+                <img src="https://upload.wikimedia.org/wikipedia/id/thumb/8/82/Valorant_logo_-_pink_color_version.svg/1200px-Valorant_logo_-_pink_color_version.svg.png" alt="Valorant">
+                <p>Valorant</p>
+            </div>
+            <div class="game-card">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/39/Genshin_Impact_logo.png/220px-Genshin_Impact_logo.png" alt="Genshin Impact">
+                <p>Genshin Impact</p>
+            </div>
+            <div class="game-card">
+                <img src="https://upload.wikimedia.org/wikipedia/id/thumb/c/cb/Call_of_Duty_Mobile_Logo.png/1200px-Call_of_Duty_Mobile_Logo.png" alt="COD Mobile">
+                <p>COD Mobile</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How To Top Up Section -->
+    <section class="howto-section" id="howto">
+        <h2 class="section-title">Cara <span>Top Up</span></h2>
+        <div class="howto-grid">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3>Pilih Game</h3>
+                <p>Pilih game yang ingin kamu top up dari daftar kami.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3>Masukkan Data</h3>
+                <p>Isi ID game dan pilih nominal yang diinginkan.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3>Pilih Pembayaran</h3>
+                <p>Pilih metode pembayaran yang kamu suka.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <h3>Selesai!</h3>
+                <p>Diamond/UC akan masuk ke akun kamu dalam waktu singkat.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="#">Instagram</a>
+            <a href="#">WhatsApp</a>
+            <a href="#">Facebook</a>
+        </div>
+        <p>&copy; 2026 Stozee. Semua hak dilindungi.</p>
+        <p>Top Up Game Terpercaya di Indonesia</p>
+    </footer>
+
+    <script>
+        // Scroll smooth untuk link navigasi
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
